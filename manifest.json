@@ -1,7 +1,8 @@
 {
-  "name": "Gmail.js",
+  "manifest_version": 2,
+  "name": "Warmly",
   "version": "0.1",
-  "description": "Hello World Gmail chrome extension",
+  "description": "Automated web research assistant.",
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],
@@ -14,5 +15,11 @@
     "gmail.js",
     "main.js"
   ],
-  "manifest_version": 2
+  "externally_connectable": {
+    "matches": ["*://mail.google.com/*"]
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  }
 }
