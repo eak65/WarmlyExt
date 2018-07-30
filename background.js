@@ -7,6 +7,11 @@ chrome.runtime.onMessageExternal.addListener(function(request, sender, sendRespo
             url: chrome.extension.getURL('result.html'),
             active: true
         }, function(tab) {
+            var ldata = {"foo": {"bar":"baz"}};
+            chrome.storage.local.set({"result": ldata}, function() {
+                console.log('Value is set to ' + ldata);
+            });
+
             // After the tab has been created, open a window to inject the tab
             chrome.windows.create({
                 tabId: tab.id,
@@ -14,12 +19,6 @@ chrome.runtime.onMessageExternal.addListener(function(request, sender, sendRespo
                 focused: true,
                 width: 640,
                 height: 480
-            });
-         
-            var ldata = {"foo": {"bar":"baz"}};
-
-            chrome.storage.local.set({"result": ldata}, function() {
-                console.log('Value is set to ' + ldata);
             });
       
             /*chrome.tabs.executeScript(tab.id, {code:"var x = 10; x"}, function(results) { 
