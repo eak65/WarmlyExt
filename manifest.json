@@ -15,7 +15,8 @@
     "gmail.js",
     "main.js",
     "result.html",
-    "result.js"
+    "result.js", 
+    "guido_rossum.json"
   ],
   "externally_connectable": {
     "matches": [

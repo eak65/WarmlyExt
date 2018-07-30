@@ -1,4 +1,4 @@
-// Handle requests for passwords
+// Handle requests for result popup
 console.log('*** Background: started');
 chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
     console.log('*** Background: ' + request);
