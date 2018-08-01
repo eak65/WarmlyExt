@@ -2,7 +2,7 @@
 console.log('*** Background: started');
 chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
     console.log('*** Background: ' + request);
-    if (request.type === 'display_warmly_result') {
+    if (request.type === 'warmly_create_popup') {
         chrome.tabs.create({
             url: chrome.extension.getURL('result.html'),
             active: false
