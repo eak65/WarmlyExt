@@ -1,18 +1,41 @@
 {
   "manifest_version": 2,
   "name": "Warmly",
-  "version": "0.1",
+  "version": "0.2",
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
-      "matches": ["*://mail.google.com/*"],
-      "js": ["content.js"],
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js", "result.js"],
       "css": ["content.css"]
     }
   ],
   "web_accessible_resources": [
     "jquery-1.10.2.min.js",
     "gmail.js",
-    "main.js"
-  ]
+    "main.js",
+    "result.html",
+    "result.js", 
+    "guido_rossum.json"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://mail.google.com/*",
+      "chrome-extension://papmjbnpmffiahcnakjfjoobkefaemii/*"
+    ]
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "tabs", 
+    "activeTab",
+    "notifications",
+    "storage",
+    "*://*/*"
+  ],
+  "content_security_policy": 
+  "script-src 'self' chrome-extension://papmjbnpmffiahcnakjfjoobkefaemii/*;  object-src 'self'",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAv+zmsBe6k5lpzGdXSX3/NCiwmTHNq2QodE1KHLIswqqnBgnsPznsIdybH7aPWErwE0pmuqiALVwxOwvzposmfvMnaBklDnWv/qBekmNSkmInPee/tgcQVNmTFcvqGfiXl8LBFdvzWTvFwxjN5MerIdc+603iNSFAqEpBRX0S4mFtGp2dA+Q2ztuAmzv2uLA5SODLABde49wtl1+wFuVWhgLvptL94iwkR8cuZVCm9bzDORB6hO69WnHlTuoHA3CmpONzoO0G93SKnTDVAaMEfpGFpECP2Li8FShIA5pKiYL46c4Qpg8fVo+H8uCDBVv1t98Zw3EVmDGSi+a+Hq8hPwIDAQAB"
 }
