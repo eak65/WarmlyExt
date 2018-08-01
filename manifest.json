@@ -5,14 +5,36 @@
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
-      "matches": ["*://mail.google.com/*"],
-      "js": ["content.js"],
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js", "result.js"],
       "css": ["content.css"]
     }
   ],
   "web_accessible_resources": [
     "jquery-1.10.2.min.js",
     "gmail.js",
-    "main.js"
-  ]
+    "main.js",
+    "result.html",
+    "result.js", 
+    "guido_rossum.json"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://mail.google.com/*",
+      "chrome-extension://elfgdpepfbaecnmmjaimeljhmlobefkc/*"
+    ]
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "tabs", 
+    "activeTab",
+    "notifications",
+    "storage",
+    "*://*/*"
+  ],
+  "content_security_policy": 
+  "script-src 'self' chrome-extension://elfgdpepfbaecnmmjaimeljhmlobefkc/*;  object-src 'self'"
 }
