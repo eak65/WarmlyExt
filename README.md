@@ -2,6 +2,7 @@
 
 ## Install from Chrome Web Store
 Navigate to: https://chrome.google.com/webstore/detail/warmly/papmjbnpmffiahcnakjfjoobkefaemii/
+
 Then press the "Add To Chrome" button.
 
 ## Install via source in Developer Mode
