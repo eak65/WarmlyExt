@@ -22,7 +22,7 @@ function load_test_data() {
     $.getJSON("guido_rossum.json", function(data) {
         console.log('Test data: ' + data);
         render_result(data); 
-        document.getElementById('loading').style.display = 'none';
+        document.getElementById('loading_img').style.display = 'none';
         document.getElementById('warmly_result_title').innerHTML = 'Results:';
     });
 }
@@ -34,9 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (request.type === 'warmly_display_result') {
             console.log('====> result.js render data: ' + request.data);
             //load_test_data();
-            render_result(request.data); 
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('warmly_result_title').innerHTML = 'Results:';
+            document.getElementById('loading_img').style.display = 'none';
+            if (request.data == null || request.data['results'].length < 1) {
+                document.getElementById('warmly_result_title').innerHTML = 'No data found.';
+            } else {
+                document.getElementById('warmly_result_title').innerHTML 
+                    = 'Results: ' + request.data['results'].length;
+                render_result(request.data); 
+            }
         }
     });
 }, false);
