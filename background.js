@@ -11,8 +11,11 @@ chrome.runtime.onMessageExternal.addListener(function(request, sender, sendRespo
             chrome.windows.create({
                 tabId: tab.id,
                 type: 'popup',
+                width: 350,
+                height: 400,
+                //left: 0,
+                //top: 0,
                 focused: true
-                // incognito, top, left, ...
             });
         });
     }

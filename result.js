@@ -1,14 +1,17 @@
 function render_row(row_data) {
   var row = $("<tr/>");
   $("#warmly_results").append(row);
-  row.append($("<td>" 
-      //row_data['published date'] != null 
-      //? row_data['published date'].substring(0,16) 
-      //: ""
-    + " keywords: \"" + row_data.keywords.join(",") + "\"<br/>" 
-    + row_data.summary
-    //+ row_data['url'] != null ? row_data['url'] : ""
+  row.append($("<td>"
+    + ss(row_data.summary)
+    + '<p><span class="r_hdr">Keywords: </span>' + ss(row_data.keywords).join(",") + "</p>"
+    + '<p><span class="r_hdr">Source: </span>' + ss(row_data.url) + "</p>"
+    + '<span class="r_hdr">Published date: </span>' + ss(row_data['published date'])
     + "</td>"));
+}
+
+// safe string...
+function ss(str) {
+  return (str != null ? str : "n/a");
 }
 
 function render_result(warmly_doc) {
