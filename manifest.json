@@ -16,7 +16,7 @@
     "main.js",
     "result.html",
     "result.js", 
-    "guido_rossum.json"
+    "selectize.js"
   ],
   "externally_connectable": {
     "matches": [
