@@ -12,18 +12,18 @@ function refresh(f) {
   }
 }
 
-function call_warmly(search_term) {
+function call_warmly(search_criteria) {
   $.support.cors = true;
   $.ajax({
       'url' : warmly_base_url,
       'type': 'GET',
       'dataType' : 'json',
       'data': {
-          'term': search_term
+          'target': search_criteria
       },
       'success' : function(data) {
           console.log('====>> results: ' + data['results']); 
-          data.terms = search_term;
+          data.terms = search_criteria;
           if (data['results'].length > 0) {
               for (var i = 0; i < data['results'].length; i++) {
                   console.log('====> published date type: ' + typeof(data['results'][i]['published date']));
