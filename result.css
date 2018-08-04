@@ -1,8 +1,9 @@
+/* we don't wan't hideous double-lines border */
 table {
     border-collapse: collapse;
 }
 
-table, th, td {
+#warmly_results tbody tr td {
    border: 1px solid black;
 }
 
@@ -10,7 +11,24 @@ table, th, td {
   font-weight: bold;
 }
 
-td {
+td img { 
+  vertical-align: top;
+}
+
+/* for "Please wait..." and "Results" */
+.warmly_result_caption {
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.warmly_result_data {
+    font-family: arial;
+    font-size: 14px;
+}
+
+/* wrap text to TD width */
+#warmly_results tbody tr td {
     white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
@@ -23,7 +41,8 @@ td {
     font-size: 12px;
 }
 
-#loading_img {
+/* center loading motion Gif */
+.loading_img {
   display: block;
   margin-left: auto;
   margin-right: auto
