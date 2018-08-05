@@ -57,7 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 render_result(request.data); 
                 document.getElementById('warmly_result_title').innerHTML = 'Results:';
                 document.getElementById('warmly_result_count').innerHTML = request.data.results.length;
-                document.getElementById('warmly_terms').innerHTML = '"' + request.data.terms + '"';
+                var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.tags;
+                document.getElementById('warmly_terms').innerHTML = '"' + terms + '"';
                 document.getElementById('terms').style.visibility = 'visible';
                 document.getElementById('sunpalms_img').style.display = 'inline-block';
             }
