@@ -51,12 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('====> result.js render data: ' + request.data);
             //load_test_data();
             document.getElementById('loading_progress').style.display = 'none';
-            if (request.data == null || request.data['results'].length < 1) {
+            if (request.data == null) {
                 document.getElementById('warmly_result_title').innerHTML = 'No data found.';
             } else {
                 render_result(request.data); 
                 document.getElementById('warmly_result_title').innerHTML = 'Results:';
                 document.getElementById('warmly_result_count').innerHTML = request.data.results.length;
+                
                 var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.tags;
                 document.getElementById('warmly_terms').innerHTML = '"' + terms + '"';
                 document.getElementById('terms').style.visibility = 'visible';

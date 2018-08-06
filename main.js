@@ -13,8 +13,7 @@ var result_display = `
                     placeholder="Enter words then tab or return after each."></td></tr>
       <tr><td></td><td>This is your statement for next steps. Use at least one of the connectors in your closing.</td></tr>
       <tr><td><label for="closing">Closing:</label></td>
-          <td><textarea class="search-input" id="closing" cols="45" rows="2">
-              </textarea></td></tr>
+          <td><textarea class="search-input" id="closing" cols="45" rows="4"></textarea></td></tr>
     </table>
 `;
 
@@ -53,7 +52,11 @@ function call_warmly(search_criteria) {
       },
       'error' : function(jqXHR, status, message) {
           console.log('====> service call error: ' + status + ': ' + message); 
-          result = '{"results":[{}]}';
+          data = {"results":[]};
+          data.search_criteria = new Object(); 
+          data.search_criteria.target = 'Server down for maintenance.'
+          data.search_criteria.tags = '';
+          data.search_criteria.closing = '';
           chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', 
              {type: 'warmly_display_result', data: data});
       }         
@@ -84,7 +87,7 @@ var main = function() {
           if (compdiv.outerText.indexOf(warmly_btn_label) == -1) {
               gmail.tools.add_compose_button(compose, warmly_btn_label, function() {
                   console.log('====> pressed warmly button...');
-                  gmail.tools.add_modal_window('Warmly search terms:', 
+                  gmail.tools.add_modal_window('', 
                       result_display, warmly_action);
               }, 'warmly_btn');
               var dialog_div = document.getElementById('gmailJsModalWindowContent');
