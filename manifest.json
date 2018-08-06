@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Warmly",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
