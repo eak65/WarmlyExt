@@ -2830,11 +2830,6 @@ var Gmail = function(localJQuery) {
             });
         };
 
-        $('#connector-tags').selectize({
-              persist: false,
-              createOnBlur: true,
-              create: true
-        });
         center();
 
         container.bind("DOMSubtreeModified", center);

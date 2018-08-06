@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Warmly Search</title>
+    <script src="test/data.js"></script>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="selectize.js"></script>
+    <!--link rel="stylesheet" type="text/css" href="result.css"-->
+    <link rel="stylesheet" type="text/css" href="srch.css">
+    <link rel="stylesheet" type="text/css" href="selectize.default.css">
+  </head>
+  <body>
+    <table class="search">
+      <tr><td></td><td>This will be the person you are trying to connect with.</td></tr>
+      <tr><td><label for="target">Target:</label></td>
+          <td><input class="search-input" type="text" id="target"></td></tr>
+      <tr><td></td><td>These are key terms that we'll use to create mutual interest.</td></tr>
+      <tr><td><label for="input-tags">Connectors:</label></td>
+          <td><input type="text" id="connector-tags" class="demo-default" 
+                    placeholder="Enter words then tab or return after each."></td></tr>
+      <tr><td></td><td>This is your statement for next steps. Use at least one of the connectors in your closing.</td></tr>
+      <tr><td><label for="closing">Closing:</label></td>
+          <td><textarea class="search-input" id="closing" cols="45" rows="2">
+              </textarea></td></tr>
+    </table>
+  </body>
+        <script>
+            $('#connector-tags').selectize({
+              persist: false,
+              createOnBlur: true,
+              create: true
+            });
+          </script>
+</html>

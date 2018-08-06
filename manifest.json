@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
   "name": "Warmly",
-  "version": "0.4.1",
+  "version": "0.4.4",
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
       "matches": ["https://mail.google.com/*"],
       "js": ["content.js", "result.js"],
-      "css": ["content.css"]
+      "css": ["content.css", "selectize.default.css"]
     }
   ],
   "web_accessible_resources": [
@@ -16,7 +16,8 @@
     "main.js",
     "result.html",
     "result.js", 
-    "selectize.js"
+    "selectize.js",
+    "selectize.default.css"
   ],
   "externally_connectable": {
     "matches": [

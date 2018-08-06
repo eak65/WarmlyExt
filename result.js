@@ -5,11 +5,11 @@ function render_row(row_data) {
 
   var td_text = '<p><span class="r_hdr">Summary: </span>' + ss(row_data.summary)
     + '<p><span class="r_hdr">Keywords: </span>' + ss(row_data.keywords).join(",") + "</p>";
-    if (row_data.hasOwnProperty('Quotes')) {
-        td_text += ('<p><span class="r_hdr">Quotes: </span>' + ss(row_data.Quotes) + "</p>");
+    if (row_data.hasOwnProperty('quotes')) {
+        td_text += ('<p><span class="r_hdr">Quotes: </span>' + ss(row_data.quotes) + "</p>");
     }
-    if (row_data.hasOwnProperty('Snippet')) {
-        td_text += ('<p><span class="r_hdr">Snippet: </span>' + ss(row_data.Snippet) + "</p>");
+    if (row_data.hasOwnProperty('snippet')) {
+        td_text += ('<p><span class="r_hdr">Snippet: </span>' + ss(row_data.snippet) + "</p>");
     }
     td_text += ('<p><span class="r_hdr">Source: </span>' + ss(row_data.url) + "</p>"
             + '<span class="r_hdr">Published date: </span>' + ss(row_data['published date']));
@@ -51,13 +51,15 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('====> result.js render data: ' + request.data);
             //load_test_data();
             document.getElementById('loading_progress').style.display = 'none';
-            if (request.data == null || request.data['results'].length < 1) {
+            if (request.data == null) {
                 document.getElementById('warmly_result_title').innerHTML = 'No data found.';
             } else {
                 render_result(request.data); 
                 document.getElementById('warmly_result_title').innerHTML = 'Results:';
                 document.getElementById('warmly_result_count').innerHTML = request.data.results.length;
-                document.getElementById('warmly_terms').innerHTML = '"' + request.data.terms + '"';
+                
+                var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.tags;
+                document.getElementById('warmly_terms').innerHTML = '"' + terms + '"';
                 document.getElementById('terms').style.visibility = 'visible';
                 document.getElementById('sunpalms_img').style.display = 'inline-block';
             }
