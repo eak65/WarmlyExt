@@ -54,7 +54,7 @@ function call_warmly(search_criteria) {
           console.log('====> service call error: ' + status + ': ' + message); 
           data = {"results":[]};
           data.search_criteria = new Object(); 
-          data.search_criteria.target = 'Server down for maintenance.'
+          data.search_criteria.target = 'Unable to analyze target due to various issues. Often times it works if you try again.';
           data.search_criteria.tags = '';
           data.search_criteria.closing = '';
           chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', 
