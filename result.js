@@ -1,12 +1,16 @@
+
 function render_row(row_data) {
 
   var row = $("<tr/>");
   $("#warmly_results").append(row);
 
   var td_text = '<p><span class="r_hdr">Summary: </span>' + ss(row_data.summary)
-    + '<p><span class="r_hdr">Keywords: </span>' + ss(row_data.keywords).join(",") + "</p>";
+    + '<p><span class="r_hdr">Keywords:</span> ' + list_to_html_list(row_data.keywords) + "</p>";
+    if (row_data.hasOwnProperty('mentions')) {
+        td_text += ('<p><span class="r_hdr">Mentions: </span>' + list_to_html_list(row_data.mentions) + "</p>");
+    }
     if (row_data.hasOwnProperty('quotes')) {
-        td_text += ('<p><span class="r_hdr">Quotes: </span>' + ss(row_data.quotes) + "</p>");
+        td_text += ('<p><span class="r_hdr">Quotes: </span>' + list_to_html_list(row_data.quotes) + "</p>");
     }
     if (row_data.hasOwnProperty('snippet')) {
         td_text += ('<p><span class="r_hdr">Snippet: </span>' + ss(row_data.snippet) + "</p>");
@@ -15,6 +19,15 @@ function render_row(row_data) {
             + '<span class="r_hdr">Published date: </span>' + ss(row_data['published date']));
 
   row.append($("<td>" + td_text + "</td>"));
+}
+
+function list_to_html_list(slist) {
+  if (slist == null || slist.length < 1)
+    return '';
+  var hlist = '<ol><li>';
+  hlist += slist.join('</li><li>')
+  hlist += '</li></ol>';
+  return hlist;  
 }
 
 // safe string...
