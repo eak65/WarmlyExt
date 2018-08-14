@@ -65,6 +65,8 @@ function call_warmly(search_criteria) {
 
 var main = function() {
 
+  init_highlight_within_textarea($);
+
   $("<style>")
     .prop("type", "text/css")
     .html("\

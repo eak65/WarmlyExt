@@ -2830,11 +2830,18 @@ var Gmail = function(localJQuery) {
             });
         };
 
+        // warmly-hack: embed "connector" input "pillbox" here
         $('#connector-tags').selectize({
               persist: false,
               createOnBlur: true,
               create: true
         });
+
+        // warmly-hack: embed styleable textarea here
+        $('.search-input').highlightWithinTextarea({
+            highlight: 'foo'
+        });
+
         center();
 
         container.bind("DOMSubtreeModified", center);

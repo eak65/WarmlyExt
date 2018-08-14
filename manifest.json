@@ -5,9 +5,16 @@
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
-      "matches": ["https://mail.google.com/*"],
-      "js": ["content.js", "result.js"],
-      "css": ["content.css", "selectize.default.css"]
+      "matches": ["*://mail.google.com/*"],
+      "js": [
+          "content.js", 
+          "result.js"
+      ],
+      "css": [
+          "content.css", 
+          "selectize.default.css",
+          "jquery.highlight-within-textarea.css"
+      ]
     }
   ],
   "web_accessible_resources": [
@@ -17,7 +24,9 @@
     "result.html",
     "result.js", 
     "selectize.js",
-    "selectize.default.css"
+    "selectize.default.css",
+    "jquery.highlight-within-textarea.js",
+    "jquery.highlight-within-textarea.css"
   ],
   "externally_connectable": {
     "matches": [

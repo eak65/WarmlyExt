@@ -49,3 +49,8 @@ label {
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
 }
+
+.hwt-content mark {
+   border-radius: 5px;
+   background-color: #f0bcb4;
+}

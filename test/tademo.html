@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Warmly Search</title>
+    <script src="data.js"></script>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="jquery.highlight-within-textarea.js"></script>
+    <link rel="stylesheet" type="text/css" href="jquery.highlight-within-textarea.css">
+
+    <style>
+        .hwt-content mark {
+            border-radius: 5px;
+            background-color: #f0bcb4;
+            /*background-color: #a3daff;*/
+        }
+
+        .hwt-content mark.red {
+            background-color: #ffc9c9;
+        }
+
+        .hwt-content mark.blue {
+            background-color: #a3daff;
+        }
+
+        .hwt-content mark.yellow {
+            background-color: #ffec99;
+        }
+    </style>
+
+    <script>
+      (function($) {
+        $(function() {
+          // Run on DOM ready
+          console.log('====> DOM ready');
+    $('.string-example').highlightWithinTextarea({
+      highlight: 'foo'
+    });
+        });
+
+        console.log('====> immediate init');
+          // Run right away
+      })(jQuery);
+  
+      function form_handler(e) {
+          console.log('====> submit: ' + e);
+      }
+    </script>
+  </head>
+  <body>
+    <form action="#" id="demo-form" onsubmit="form_handler()">
+      <textarea class="string-example"></textarea>
+      <input type="submit" value="submit" />
+    </form>
+  </body>
+</html>
