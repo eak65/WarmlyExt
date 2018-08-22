@@ -33,7 +33,7 @@ function list_to_html_list(slist) {
   var hlist = '<ol><li>';
   hlist += slist.join('</li><li>')
   hlist += '</li></ol>';
-  return hlist;  
+  return hlist;
 }
 
 // safe string...
@@ -52,7 +52,7 @@ function load_test_data() {
     $.getJSON("guido_rossum.json", function(data) {
         //data.terms = 'One two three';
         console.log('Test data: ' + data);
-        render_result(data); 
+        render_result(data);
         document.getElementById('loading_progress').style.display = 'none';
         document.getElementById('warmly_result_title').innerHTML = 'Results:';
         document.getElementById('warmly_result_count').innerHTML = data.results.length;
@@ -73,10 +73,10 @@ document.addEventListener('DOMContentLoaded', function() {
             if (request.data == null) {
                 document.getElementById('warmly_result_title').innerHTML = 'No data found.';
             } else {
-                render_result(request.data); 
+                render_result(request.data);
                 document.getElementById('warmly_result_title').innerHTML = 'Results:';
                 document.getElementById('warmly_result_count').innerHTML = request.data.results.length;
-                
+
                 var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.tags;
                 document.getElementById('warmly_terms').innerHTML = '"' + terms + '"';
                 document.getElementById('terms').style.visibility = 'visible';
@@ -85,4 +85,3 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 }, false);
-
