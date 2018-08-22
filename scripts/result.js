@@ -53,12 +53,12 @@ function load_test_data() {
         //data.terms = 'One two three';
         console.log('Test data: ' + data);
         render_result(data);
-        document.getElementById('loading_progress').style.display = 'none';
-        document.getElementById('warmly_result_title').innerHTML = 'Results:';
-        document.getElementById('warmly_result_count').innerHTML = data.results.length;
-        document.getElementById('warmly_terms').innerHTML = 'One Two Three';
-        document.getElementById('terms').style.visibility = 'visible';
-        document.getElementById('sunpalms_img').style.display = 'inline-block';
+        $('#loading_progress').css('display', 'none');
+        $('#warmly_result_title').text('Results:');
+        $('#warmly_result_count').text(data.results.length);
+        $('#warmly_terms').text('One Two Three');
+        $('#terms').css('visibility', 'visible');
+        $('#sunpalms_img').css('display', 'inline-block');
     });
 }
 
@@ -69,18 +69,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (request.type === 'warmly_display_result') {
             console.log('====> result.js render data: ' + request.data);
             //load_test_data();
-            document.getElementById('loading_progress').style.display = 'none';
+            $('#loading_progress').css('display', 'none');
             if (request.data == null) {
-                document.getElementById('warmly_result_title').innerHTML = 'No data found.';
+                $('#warmly_result_title').text('No data found.');
             } else {
                 render_result(request.data);
-                document.getElementById('warmly_result_title').innerHTML = 'Results:';
-                document.getElementById('warmly_result_count').innerHTML = request.data.results.length;
+                $('#warmly_result_title').text('Results:');
+                $('#warmly_result_count').text(request.data.results.length);
 
                 var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.tags;
-                document.getElementById('warmly_terms').innerHTML = '"' + terms + '"';
-                document.getElementById('terms').style.visibility = 'visible';
-                document.getElementById('sunpalms_img').style.display = 'inline-block';
+                $('#warmly_terms').text(terms);
+                $('#terms').css('visibility', 'visible');
+                $('#sunpalms_img').css('display', 'inline-block');
             }
         }
     });
