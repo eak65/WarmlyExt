@@ -1,7 +1,9 @@
 var gmail;
+
 var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
 //var warmly_base_url='http://localhost:8000/guido_rossum.json';
 
+// TODO: should be loadable HTML file/template...
 var result_display = `
     <table class="search">
       <tr><td></td><td>This will be the person you are trying to connect with.</td></tr>
@@ -17,6 +19,7 @@ var result_display = `
     </table>
 `;
 
+// TODO: externalize
 var warmly_btn_label = "Warm";
 
 function refresh(f) {
@@ -63,6 +66,15 @@ function call_warmly(search_criteria) {
   });
 }
 
+var boot_up = function() {
+    gmail = new Gmail();
+    gmail.observe.on('load', function() {
+        console.log('====> gmail-on-load...');
+        main();
+    });
+}
+
+
 var main = function() {
 
   $("<style>")
@@ -73,7 +85,7 @@ var main = function() {
       background-image: none; \
     }").appendTo("head");
 
-  gmail = new Gmail();
+  //gmail = new Gmail();
 
   gmail.observe.on('compose', function() {
       console.log('====> compose');
@@ -114,4 +126,4 @@ var main = function() {
   };
 }
 
-refresh(main);
+refresh(boot_up);
