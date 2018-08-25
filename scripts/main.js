@@ -22,11 +22,12 @@ var result_display = `
 // TODO: externalize
 var warmly_btn_label = "Warm";
 
-function refresh(f) {
+function refresh(warmly_entry_point) {
   if( (/in/.test(document.readyState)) || (typeof Gmail === undefined) ) {
-    setTimeout('refresh(' + f + ')', 10);
+    setTimeout('refresh(' + warmly_entry_point + ')', 10);
   } else {
-    f();
+    console.log('===> document.readyState: ' + document.readyState);
+    warmly_entry_point();
   }
 }
 
@@ -66,16 +67,8 @@ function call_warmly(search_criteria) {
   });
 }
 
-var boot_up = function() {
-    gmail = new Gmail();
-    gmail.observe.on('load', function() {
-        console.log('====> gmail-on-load...');
-        main();
-    });
-}
-
-
 var main = function() {
+  gmail = new Gmail();
 
   $("<style>")
     .prop("type", "text/css")
@@ -126,4 +119,4 @@ var main = function() {
   };
 }
 
-refresh(boot_up);
+refresh(main);
