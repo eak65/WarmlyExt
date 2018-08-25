@@ -1,7 +1,9 @@
 var gmail;
+
 var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
 //var warmly_base_url='http://localhost:8000/guido_rossum.json';
 
+// TODO: should be loadable HTML file/template...
 var result_display = `
     <table class="search">
       <tr><td></td><td>This will be the person you are trying to connect with.</td></tr>
@@ -17,13 +19,15 @@ var result_display = `
     </table>
 `;
 
+// TODO: externalize
 var warmly_btn_label = "Warm";
 
-function refresh(f) {
+function refresh(warmly_entry_point) {
   if( (/in/.test(document.readyState)) || (typeof Gmail === undefined) ) {
-    setTimeout('refresh(' + f + ')', 10);
+    setTimeout('refresh(' + warmly_entry_point + ')', 10);
   } else {
-    f();
+    console.log('===> document.readyState: ' + document.readyState);
+    warmly_entry_point();
   }
 }
 
@@ -64,6 +68,7 @@ function call_warmly(search_criteria) {
 }
 
 var main = function() {
+  gmail = new Gmail();
 
   $("<style>")
     .prop("type", "text/css")
@@ -73,7 +78,7 @@ var main = function() {
       background-image: none; \
     }").appendTo("head");
 
-  gmail = new Gmail();
+  //gmail = new Gmail();
 
   gmail.observe.on('compose', function() {
       console.log('====> compose');
