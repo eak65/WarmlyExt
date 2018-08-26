@@ -3,8 +3,9 @@ var gmail;
 var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
 //var warmly_base_url='http://localhost:8000/guido_rossum.json';
 
+
 // TODO: should be loadable HTML file/template...
-var result_display = `
+var criteria_dialog = `
     <table class="search">
       <tr><td></td><td>This will be the person you are trying to connect with.</td></tr>
       <tr><td><label for="target">Target:</label></td>
@@ -18,6 +19,7 @@ var result_display = `
           <td><textarea class="search-input" id="closing" cols="45" rows="4"></textarea></td></tr>
     </table>
 `;
+
 
 // TODO: externalize
 var warmly_btn_label = "Warm";
@@ -67,6 +69,13 @@ function call_warmly(search_criteria) {
   });
 }
 
+// RegEx to parse recipient email in form of 'First Last <someemail@domain.foo.co.uk>'
+// We just want the name portion....
+// If these two declarations are moved to the top of this file
+// it breaks.  
+var email_re=/([\w\s]*)<([-.\w]+@[\w-]+(\.+[\w-]+)*)>/
+var recipient_name=null;
+
 var main = function() {
   gmail = new Gmail();
 
@@ -77,8 +86,6 @@ var main = function() {
       background-color: #ff6666; \
       background-image: none; \
     }").appendTo("head");
-
-  //gmail = new Gmail();
 
   gmail.observe.on('compose', function() {
       console.log('====> compose');
@@ -93,19 +100,44 @@ var main = function() {
               gmail.tools.add_compose_button(compose, warmly_btn_label, function() {
                   console.log('====> pressed warmly button...');
                   gmail.tools.add_modal_window('', 
-                      result_display, warmly_action);
+                      criteria_dialog, warmly_action);
+
+                  if (recipient_name!=null) {
+                      $('#target').val(recipient_name);
+                  }
               }, 'warmly_btn');
-              var dialog_div = document.getElementById('gmailJsModalWindowContent');
+
+              var dialog_div = $('#gmailJsModalWindowContent');
               console.log('====> dialog type: ' + typeof dialog_div);
           }
       }
   });
+
+  gmail.observe.on('recipient_change', function(match, recipients) {
+      var z = 0;
+
+      if (recipients==null || ! ('to' in recipients) 
+       || recipients.to.length<1 || recipients.to[0].trim().length<1) {
+          recipient_name = null;
+          console.log('recipients cleared');
+          return;
+      }
+      console.log('recipients changed to:', recipients.to[0]);
+      var parsed = recipients.to[0].match(email_re);
+      console.log('recipients parts:', parsed);
+      var recipient = parsed!=null?(parsed.length>2?parsed[1]:null):null;
+      if (recipient!=null) {
+          recipient_name = recipient.trim();
+      }
+
+      console.log('Name part: ' + recipient_name);
+  });
   
   var warmly_action = function() {
       var args = new Object(); 
-      args.target = document.getElementById("target").value;
-      args.tags = document.getElementById("connector-tags").value;
-      args.closing = document.getElementById("closing").value;
+      args.target = $('#target').val();
+      args.tags = $('#connector-tags').val();
+      args.closing = $('#closing').val();
       console.log('====> target: ' + args.target
           + ' tags: ' + args.tags + ' closing: ' + args.closing);
       chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', {type:'warmly_create_popup'});
