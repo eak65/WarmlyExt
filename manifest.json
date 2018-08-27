@@ -1,22 +1,22 @@
 {
   "manifest_version": 2,
   "name": "Warmly",
-  "version": "0.4.7",
+  "version": "0.4.8",
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
-      "matches": ["https://mail.google.com/*"],
-      "js": ["scripts/content.js", "scripts/result.js"],
-      "css": ["styles/content.css", "styles/selectize.default.css"]
+      "matches": ["*://mail.google.com/*"],
+      "js": ["js/content.js", "js/result.js"],
+      "css": ["css/content.css", "css/selectize.default.css"]
     }
   ],
   "web_accessible_resources": [
-    "scripts/jquery-1.10.2.min.js",
-    "scripts/gmail.js",
-    "scripts/main.js",
-    "scripts/result.html",
-    "scripts/result.js",
-    "scripts/selectize.js"
+    "js/jquery-1.10.2.min.js",
+    "js/gmail.js",
+    "js/main.js",
+    "js/result.html",
+    "js/result.js",
+    "js/selectize.js"
   ],
   "externally_connectable": {
     "matches": [
@@ -25,7 +25,7 @@
     ]
   },
   "background": {
-    "scripts": ["scripts/background.js"],
+    "scripts": ["js/background.js"],
     "persistent": false
   },
   "permissions": [
