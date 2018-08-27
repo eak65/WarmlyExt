@@ -2831,6 +2831,13 @@ var Gmail = function(localJQuery) {
         };
 
         // warmly-hack: embed "connector" input "pillbox" here
+        $('#identifier-tags').selectize({
+              persist: false,
+              createOnBlur: true,
+              create: true
+        });
+
+        // warmly-hack: embed "connector" input "pillbox" here
         $('#connector-tags').selectize({
               persist: false,
               createOnBlur: true,

@@ -8,10 +8,14 @@ var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
 var criteria_dialog = `
     <table class="search">
       <tr><td></td><td>This will be the person you are trying to connect with.</td></tr>
-      <tr><td><label for="target">Target:</label></td>
+      <tr><td><label for="target">Name:</label></td>
           <td><input class="search-input" type="text" id="target"></td></tr>
+      <tr><td></td><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, Identifiers.</td></tr>
+      <tr><td><label for="identifier-tags">Identifiers:</label></td>
+          <td><input type="text" id="identifier-tags" class="demo-default"
+                    placeholder="Enter words then tab or return after each."></td></tr>
       <tr><td></td><td>These are key terms that we'll use to create mutual interest.</td></tr>
-      <tr><td><label for="input-tags">Connectors:</label></td>
+      <tr><td><label for="connector-tags">Connectors:</label></td>
           <td><input type="text" id="connector-tags" class="demo-default"
                     placeholder="Enter words then tab or return after each."></td></tr>
       <tr><td></td><td>This is your statement for next steps. Use at least one of the connectors in your closing.</td></tr>
@@ -41,7 +45,8 @@ function call_warmly(search_criteria) {
       'dataType' : 'json',
       'data': {
           'target': search_criteria.target,
-          'connectors': search_criteria.tags,
+          'identifiers': search_criteria.identifiers,
+          'connectors': search_criteria.connectors,
           'closing': search_criteria.closing
       },
       'success' : function(data) {
@@ -144,7 +149,8 @@ var main = function() {
   var warmly_action = function() {
       var args = new Object(); 
       args.target = $('#target').val();
-      args.tags = $('#connector-tags').val();
+      args.connectors = $('#connector-tags').val();
+      args.identifiers = $('#identifier-tags').val();
       args.closing = $('#closing').val();
       console.log('====> target: ' + args.target
           + ' tags: ' + args.tags + ' closing: ' + args.closing);
