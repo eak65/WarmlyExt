@@ -11,6 +11,10 @@ var sel  = document.createElement('script');
 sel.src = chrome.extension.getURL('js/selectize.js');
 (document.head || document.documentElement).appendChild(sel);
 
+var hi = document.createElement('script');
+hi.src = chrome.extension.getURL('js/jquery.highlight-within-textarea.js');
+(document.head || document.documentElement).appendChild(hi);
+
 var s = document.createElement('script');
 s.src = chrome.extension.getURL('js/main.js');
 (document.head || document.documentElement).appendChild(s);

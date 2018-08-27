@@ -47,11 +47,11 @@ function call_warmly(search_criteria) {
       'success' : function(data) {
           console.log('====>> results: ' + data['results']); 
           data.search_criteria = search_criteria;
-          if (data['results'].length > 0) {
+          /*if (data['results'].length > 0) {
               for (var i = 0; i < data['results'].length; i++) {
                   console.log('====> published date type: ' + typeof(data['results'][i]['published date']));
               }
-          }
+          }*/
           var payload = {type: 'warmly_display_result', data: data};
           console.log('====>> payload type: ' + payload.type + ' payload data: ' + payload.data);
           chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', payload);
@@ -73,11 +73,19 @@ function call_warmly(search_criteria) {
 // We just want the name portion....
 // If these two declarations are moved to the top of this file
 // it breaks.  
-var email_re=/([\w\s]*)<([-.\w]+@[\w-]+(\.+[\w-]+)*)>/
+var email_re=/([\w\s,\._-]*)<([-.\w]+@[\w-]+(\.+[\w-]+)*)>/
 var recipient_name=null;
+
+function get_connector_words() {
+    var connectors = $('#connector-tags').val().split(',');
+    console.log('====> connectors: ' + connectors);
+    return connectors;
+}    
 
 var main = function() {
   gmail = new Gmail();
+
+  init_highlight_within_textarea($); 
 
   $("<style>")
     .prop("type", "text/css")
