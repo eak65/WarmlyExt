@@ -7,7 +7,7 @@
     {
       "matches": ["https://mail.google.com/*"],
       "js": ["scripts/content.js", "scripts/result.js"],
-      "css": ["styles/content.css", "styles/selectize.default.css"]
+      "css": ["styles/content.css", "styles/selectize.default.css", "styles/material.min.css"]
     }
   ],
   "web_accessible_resources": [
@@ -16,7 +16,8 @@
     "scripts/main.js",
     "scripts/result.html",
     "scripts/result.js",
-    "scripts/selectize.js"
+    "scripts/selectize.js",
+    "scripts/material.min.js"
   ],
   "externally_connectable": {
     "matches": [
