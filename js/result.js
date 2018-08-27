@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 $('#warmly_result_title').text('Results:');
                 $('#warmly_result_count').text(request.data.results.length);
 
-                var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.tags;
+                var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.connectors;
                 $('#warmly_terms').text(terms);
                 $('#terms').css('visibility', 'visible');
                 $('#sunpalms_img').css('display', 'inline-block');
