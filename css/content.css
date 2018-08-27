@@ -49,3 +49,10 @@ label {
      -moz-box-sizing: border-box;    /* Firefox, other Gecko */
      box-sizing: border-box;         /* Opera/IE 8+ */
 }
+
+/* tag words highlighting styling */
+.hwt-content mark {
+   border-radius: 1px;
+   background-color: #a7b9f2;
+   /*background-color: #f0bcb4;*/
+}
