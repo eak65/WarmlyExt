@@ -7,7 +7,9 @@
     {
       "matches": ["*://mail.google.com/*"],
       "js": ["js/content.js", "js/result.js"],
-      "css": ["css/content.css", "css/selectize.default.css"]
+      "css": ["css/content.css", 
+              "css/selectize.default.css",
+              "css/jquery.highlight-within-textarea.css"]
     }
   ],
   "web_accessible_resources": [
@@ -16,7 +18,9 @@
     "js/main.js",
     "js/result.html",
     "js/result.js",
-    "js/selectize.js"
+    "js/selectize.js",
+    "js/jquery.highlight-within-textarea.js",
+    "js/jquery.highlight-within-textarea.css"
   ],
   "externally_connectable": {
     "matches": [
