@@ -24,7 +24,6 @@ var criteria_dialog = `
     </table>
 `;
 
-
 // TODO: externalize
 var warmly_btn_label = "Warm";
 
@@ -50,7 +49,7 @@ function call_warmly(search_criteria) {
           'closing': search_criteria.closing
       },
       'success' : function(data) {
-          console.log('====>> results: ' + data['results']); 
+          console.log('====>> results: ' + data['results']);
           data.search_criteria = search_criteria;
           /*if (data['results'].length > 0) {
               for (var i = 0; i < data['results'].length; i++) {
@@ -62,35 +61,41 @@ function call_warmly(search_criteria) {
           chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', payload);
       },
       'error' : function(jqXHR, status, message) {
-          console.log('====> service call error: ' + status + ': ' + message); 
+          console.log('====> service call error: ' + status + ': ' + message);
           data = {"results":[]};
-          data.search_criteria = new Object(); 
+          data.search_criteria = new Object();
           data.search_criteria.target = 'Unable to analyze target due to various issues. Often times it works if you try again.';
           data.search_criteria.tags = '';
           data.search_criteria.closing = '';
-          chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', 
+          chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii',
              {type: 'warmly_display_result', data: data});
-      }         
+      }
   });
 }
 
 // RegEx to parse recipient email in form of 'First Last <someemail@domain.foo.co.uk>'
 // We just want the name portion....
 // If these two declarations are moved to the top of this file
-// it breaks.  
+// it breaks.
 var email_re=/([\w\s,\._-]*)<([-.\w]+@[\w-]+(\.+[\w-]+)*)>/
 var recipient_name=null;
+
+function isRegisteredEmail(email) {
+  // Add our registered email list here
+  var emails = ["ghutirea@gmail.com"];
+  return emails.includes(email);
+}
 
 function get_connector_words() {
     var connectors = $('#connector-tags').val().split(',');
     console.log('====> connectors: ' + connectors);
     return connectors;
-}    
+}
 
 var main = function() {
   gmail = new Gmail();
 
-  init_highlight_within_textarea($); 
+  init_highlight_within_textarea($);
 
   $("<style>")
     .prop("type", "text/css")
@@ -112,11 +117,21 @@ var main = function() {
           if (compdiv.outerText.indexOf(warmly_btn_label) == -1) {
               gmail.tools.add_compose_button(compose, warmly_btn_label, function() {
                   console.log('====> pressed warmly button...');
-                  gmail.tools.add_modal_window('', 
-                      criteria_dialog, warmly_action);
 
-                  if (recipient_name!=null) {
+
+                  if (!isRegisteredEmail(gmail.get.user_email())) {
+                    var openRegistrationPage = function() {
+                      window.open('https://brianlee11.typeform.com/to/aZzb92').focus();
+                    };
+                    gmail.tools.add_modal_window('Warmly Registration', 'Would you like register for Warmly?', openRegistrationPage);
+                  }
+                  else {
+                    gmail.tools.add_modal_window('',
+                    criteria_dialog, warmly_action);
+
+                    if (recipient_name!=null) {
                       $('#target').val(recipient_name);
+                    }
                   }
               }, 'warmly_btn');
 
@@ -129,7 +144,7 @@ var main = function() {
   gmail.observe.on('recipient_change', function(match, recipients) {
       var z = 0;
 
-      if (recipients==null || ! ('to' in recipients) 
+      if (recipients==null || ! ('to' in recipients)
        || recipients.to.length<1 || recipients.to[0].trim().length<1) {
           recipient_name = null;
           console.log('recipients cleared');
@@ -145,9 +160,9 @@ var main = function() {
 
       console.log('Name part: ' + recipient_name);
   });
-  
+
   var warmly_action = function() {
-      var args = new Object(); 
+      var args = new Object();
       args.target = $('#target').val();
       args.connectors = $('#connector-tags').val();
       args.identifiers = $('#identifier-tags').val();
