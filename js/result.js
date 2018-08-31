@@ -77,9 +77,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 $('#warmly_result_title').text('Results:');
                 $('#warmly_result_count').text(request.data.results.length);
 
-                var terms = request.data.search_criteria.target + ': ' + request.data.search_criteria.tags;
+                var terms = request.data.search_criteria.target;
                 $('#warmly_terms').text(terms);
-                $('#terms').css('visibility', 'visible');
+
+                var tags = request.data.search_criteria.tags ? request.data.search_criteria.tags : "None";
+                $('#warmly_tags').text(tags);
+
+                $('#tags').show();
+                $('#terms').show();
+
+                // $('#terms').css('visibility', 'visible');
                 $('#sunpalms_img').css('display', 'inline-block');
             }
         }
