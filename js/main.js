@@ -82,7 +82,13 @@ var recipient_name=null;
 
 function isRegisteredEmail(email) {
   // Add our registered email list here
-  var emails = ["ghutirea@gmail.com"];
+  var emails = [
+      "ghutirea@gmail.com",
+      "phuocqphan@gmail.com",
+      "Ethan@studytreeapp.com",
+      "cw10025@gmail.com",
+      "chris.wolf.gdev@gmail.com"
+  ];
   return emails.includes(email);
 }
 
@@ -117,18 +123,13 @@ var main = function() {
           if (compdiv.outerText.indexOf(warmly_btn_label) == -1) {
               gmail.tools.add_compose_button(compose, warmly_btn_label, function() {
                   console.log('====> pressed warmly button...');
-
-
                   if (!isRegisteredEmail(gmail.get.user_email())) {
                     var openRegistrationPage = function() {
                       window.open('https://brianlee11.typeform.com/to/aZzb92').focus();
                     };
                     gmail.tools.add_modal_window('Warmly Registration', 'Would you like register for Warmly?', openRegistrationPage);
-                  }
-                  else {
-                    gmail.tools.add_modal_window('',
-                    criteria_dialog, warmly_action);
-
+                  } else {
+                    gmail.tools.add_modal_window('', criteria_dialog, warmly_action);
                     if (recipient_name!=null) {
                       $('#target').val(recipient_name);
                     }
