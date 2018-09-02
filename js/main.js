@@ -85,7 +85,7 @@ function isRegisteredEmail(email) {
   var emails = [
       "ghutirea@gmail.com",
       "phuocqphan@gmail.com",
-      "Ethan@studytreeapp.com",
+      "ethan@studytreeapp.com",
       "cw10025@gmail.com",
       "chris.wolf.gdev@gmail.com"
   ];
