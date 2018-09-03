@@ -10,7 +10,18 @@
     <script defer src="js/material.min.js"></script>
   </head>
   <body>
-    <table>
+    <header id="warmly-header" class="mdl-layout__header mdl-layout__header--scroll mdl-color--orange-300">
+      <div class="mdl-layout__header-row">
+        <img src="images/sunpalms-45.png"/>
+        <h3 style="font-family: initial;">Warmly</h3>
+      </div>
+    </header>
+    <div id="loading_progress">
+      <h6 class="loading-message text-align-center">Let's warm this up. This may take up to 5 minutes.</h6>
+      <div class="text-align-center"><div class="loading_img mdl-spinner mdl-js-spinner is-active"></div></div>
+      <img class="loading_img" src="images/murray.gif"></img>
+    </div>
+    <table class="display-none" id="results_table">
       <tr>
         <td>
           <div style="display:inline-block">
@@ -20,23 +31,14 @@
                 <td id="warmly_terms" class="warmly_top_data"></td>
               </tr>
               <tr>
-                <td id="warmly_result_title"><h6>Let's warm this up. This may take up to 5 minutes.</h6></td>
+                <td id="warmly_result_title"><h6></h6></td>
                 <td id="warmly_result_count" class="warmly_top_data"></td>
               </tr>
             </table>
           </div>
-          <div style="display:none; float: right;" id="sunpalms_img">
-            <img src="images/sunpalms-45.png"/>
-          </div>
         </td>
       </tr>
       <tr>
-        <td id="loading_progress">
-          <table>
-            <tr><td class="text-align-center"><div class="loading_img mdl-spinner mdl-js-spinner is-active"></div></td><tr>
-            <tr><td><img class="loading_img" src="images/murray.gif"></img></td></tr>
-          </table>
-        </td>
         </tr>
         <tr>
           <td>

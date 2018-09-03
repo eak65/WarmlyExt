@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('====> result.js render data: ' + request.data);
             //load_test_data();
             $('#loading_progress').css('display', 'none');
+            $('#results_table').css('display', 'table');
             if (request.data == null) {
                 $('#warmly_result_title').text('No data found.');
             } else {
