@@ -2,6 +2,22 @@
 console.log('*** Background: started');
 chrome.runtime.onMessageExternal.addListener(function(request, sender, sendResponse) {
     console.log('*** Background: ' + request);
+
+    if (request.type === 'warmly_load_file') {
+      $.ajax({
+            url: chrome.extension.getURL(request.file),
+            dataType: "html",
+            success: function(data) {
+                console.log('==bs==> successfully loaded "' + request.file + '"');
+                sendResponse(data);
+            },
+            error: function(e) {
+                console.log('==bs==> Erorr trying to load "' + request.file + '": ' + e.message);
+            }
+        });
+        return true; // keep port open for async loading
+    }
+
     if (request.type === 'warmly_create_popup') {
         chrome.tabs.create({
             url: chrome.extension.getURL('result.html'),

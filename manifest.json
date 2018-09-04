@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Warmly",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
@@ -29,8 +29,9 @@
     ]
   },
   "background": {
-    "scripts": ["js/background.js"],
-    "persistent": false
+    "scripts": ["js/background.js", "js/jquery-1.10.2.min.js"],
+    "pages": ["background.html"]
+    //"persistent": false
   },
   "permissions": [
     "tabs",

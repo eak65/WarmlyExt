@@ -3,26 +3,8 @@ var gmail;
 var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
 //var warmly_base_url='http://localhost:8000/guido_rossum.json';
 
-
-// TODO: should be loadable HTML file/template...
-var criteria_dialog = `
-    <table class="search">
-      <tr><td></td><td>This will be the person you are trying to connect with.</td></tr>
-      <tr><td><label for="target">Name:</label></td>
-          <td><input class="search-input" type="text" id="target"></td></tr>
-      <tr><td></td><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, Identifiers.</td></tr>
-      <tr><td><label for="identifier-tags">Identifiers:</label></td>
-          <td><input type="text" id="identifier-tags" class="demo-default"
-                    placeholder="Enter words then tab or return after each."></td></tr>
-      <tr><td></td><td>These are key terms that we'll use to create mutual interest.</td></tr>
-      <tr><td><label for="connector-tags">Connectors:</label></td>
-          <td><input type="text" id="connector-tags" class="demo-default"
-                    placeholder="Enter words then tab or return after each."></td></tr>
-      <tr><td></td><td>This is your statement for next steps. Use at least one of the connectors in your closing.</td></tr>
-      <tr><td><label for="closing">Closing:</label></td>
-          <td><textarea class="search-input" id="closing" cols="45" rows="4"></textarea></td></tr>
-    </table>
-`;
+// this is now loaded from 'criteria_dialog.html'
+var criteria_dialog = "";
 
 // TODO: externalize
 var warmly_btn_label = "Warm";
@@ -98,10 +80,24 @@ function get_connector_words() {
     return connectors;
 }
 
+// Due to cross-origin security, the background script must load and send back
+function load_file(file_name) {
+  // the callback is asynchrous, so can't really just return value,
+  // hence hardcoded assignment to criteria_dialog
+  chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii',
+      {type:'warmly_load_file', file: file_name}, function(content) {
+        console.log('====> dialog typeof: ' + typeof content);
+        //console.log('====> dialog: ' + content);
+        criteria_dialog = content;
+  });
+}
+
 var main = function() {
   gmail = new Gmail();
 
   init_highlight_within_textarea($);
+
+  load_file('criteria_dialog.html');
 
   $("<style>")
     .prop("type", "text/css")
@@ -172,9 +168,6 @@ var main = function() {
           + ' tags: ' + args.tags + ' closing: ' + args.closing);
       chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', {type:'warmly_create_popup'});
       console.log('====> sent message to request popup');
-      /*setTimeout(function() {
-          chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', {type:'warmly_display_result'});
-      }, 1000);*/
       call_warmly(args);
       console.log('====> called warmly.');
       gmail.tools.remove_modal_window();

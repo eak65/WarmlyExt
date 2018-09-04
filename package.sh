@@ -1,1 +1,1 @@
-zip -r9 ../warmly_package.zip . -x *.git* -x test/**\* 
+zip -r9 ../warmly_package.zip . -x package.sh -x README.md -x *.git* -x test/**\* 
