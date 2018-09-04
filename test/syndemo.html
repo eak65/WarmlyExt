@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Synonym Demo</title>
+    <!--
+    use version 4.19 and no newer to avoid this issue:
+    https://stackoverflow.com/questions/46927541/vis-js-crossed-edges-in-4-21-hierarchical-graph
+    -->
+    <script src="vis.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="vis-network.min.css">
+    <style>
+      #synonyms {
+        width: 600px;
+        height: 200px;
+        border: 1px solid lightgray;
+      }
+      .sep {
+        height: 1px;
+        width: 35%;
+        margin-left: 40px;
+        background-color: #dddddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="synonyms"></div>
+    <script type="text/javascript">
+      var nodes = [
+        { id: 1, label: 'Education'},
+        { id: 2, label: 'Achievement'},
+        { id: 3, label: 'Winning'},
+        { id: 4, label: 'Goal'},
+        { id: 5, label: 'Retention'},
+        { id: 6, label: 'Persistence'},
+        { id: 7, label: 'Attainment'},
+        { id: 8, label: 'Graduation'},
+        { id: 9, label: 'Contact'},
+        { id: 10, label: 'Interact'}
+      ];
+      var edges = [
+        { from: 1, to: 2},
+        { from: 1, to: 3},
+        { from: 1, to: 4},
+        { from: 5, to: 6},
+        { from: 5, to: 7},
+        { from: 8, to: 9},
+        { from: 8, to: 10}
+      ];
+      var container = document.getElementById('synonyms');
+      var data = {
+        nodes: nodes,
+        edges: edges
+      };
+      var options = {
+        /*edges: {
+          font: {
+            size: 12
+          },
+          widthConstraint: {
+            maximum: 90
+          }
+        },*/
+        nodes: {
+          shape: 'box',
+          margin: 10,
+          widthConstraint: {
+            maximum: 200
+          }
+        },
+        layout: {
+            hierarchical: {
+                direction: "UD",
+                sortMethod: "directed",
+                levelSeparation: 75,
+                nodeSpacing: 40,
+                treeSpacing: 100 // treeSpacing doesn't seem to work
+                //blockShifting: true,
+                //edgeMinimization: true,
+                //parentCentralization: true
+            }
+        }/*,
+        interaction: {dragNodes :false} */
+      };
+      var network = new vis.Network(container, data, options);
+      network.on("click", function (params) {
+          console.log(params);
+      });
+    </script>
+  </body>
+</html>

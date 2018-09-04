@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Warmly Search</title>
+    <script src="data.js"></script>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="render.js"></script>
+    <link rel="stylesheet" type="text/css" href="result.css">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <div style="display:inline-block">
+            <table>
+              <tr id="terms" style="visibility: hidden;">
+                <td id="warmly_terms_hdr" class="r_hdr">Terms:</td>
+                <td id="warmly_terms" class="warmly_top_caption"></td>
+              </tr>
+              <tr>
+                <td id="warmly_result_title">Let's Warm This Up</td>
+                <td id="warmly_result_count" class="warmly_top_caption"></td>
+              </tr>
+            </table>
+          </div>
+          <div style="display:none; float: right;" id="sunpalms_img">
+            <img src="sunpalms-45.png"/>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td id="loading_progress">
+          <table>
+            <tr><td><img class="loading_img" src="ajax-loader.gif" style="padding-bottom: 30px"></img></td></tr>
+            <tr><td><img class="loading_img" src="murray.gif"></img></td></tr>
+          </table>
+        </td>
+        </tr>
+        <tr>
+          <td>
+            <table id="warmly_results"></table>
+          </td>
+        </tr>
+    </table>
+  </body>
+</html>
