@@ -6,8 +6,8 @@
   "content_scripts": [
     {
       "matches": ["*://mail.google.com/*"],
-      "js": ["js/content.js", "js/result.js"],
-      "css": ["css/content.css", 
+      "js": ["js/content.js", "js/result.js", "js/Chart.min.js"],
+      "css": ["css/content.css",
               "css/selectize.default.css",
               "css/jquery.highlight-within-textarea.css"]
     }

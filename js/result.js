@@ -23,7 +23,7 @@ function render_row(row_data) {
     }
     td_text += ('<p><span class="r_hdr">Source:</span> ' + ss(row_data.url) + "</p>"
             + '<span class="r_hdr">Published date:</span> ' + ss(row_data['published date']));
-
+    td_text += '<canvas class="canvas"></canvas>';
   row.append($("<td>" + td_text + "</td>"));
 }
 
@@ -41,10 +41,29 @@ function ss(str) {
   return (str != null ? str : "n/a");
 }
 
+function render_chart(i, dataSets) {
+  var ctx = document.getElementsByTagName('canvas')[i].getContext('2d');
+  // This represents one color on the graph
+
+  var chart = new Chart(ctx, {
+      type: 'radar',
+      data: {
+          labels: ['Running', 'Swimming', 'Eating', 'Juggling'],
+          datasets: dataSets
+      }
+  });
+}
 function render_result(warmly_doc) {
     $.each(warmly_doc['results'], function(i, row) {
          console.log('row: ' + i + ': ' + row['published date']);
         render_row(row);
+
+        var dataSet = {
+            label: "Ethan",
+            data: [2, 10, 4, 20],
+            backgroundColor: ['rgba(100, 255, 0, 0.5)']
+        };
+        render_chart(i, [dataSet]);
     });
 }
 
