@@ -1,0 +1,52 @@
+{
+  "connectors": [
+    "student", 
+    "success", 
+    "graduation"
+  ], 
+  "identifiers": [
+    "UMBC", 
+    "education technology"
+  ], 
+  "mips": [
+    {
+      "m": "string", 
+      "r": "string"
+    }
+  ], 
+  "radar": {
+    "datasets": [
+      {
+        "data": [
+          51, 
+          25, 
+          39
+        ]
+      }
+    ], 
+    "label": [
+      "s1", 
+      "s2", 
+      "s3"
+    ]
+  }, 
+  "snippet": "test message", 
+  "synonym": [
+    {
+      "root": "success", 
+      "syn": [
+        "achievement", 
+        "accomplishment", 
+        "winning"
+      ]
+    }, 
+    {
+      "root": "graduation", 
+      "syn": [
+        "commencement", 
+        "convocation"
+      ]
+    }
+  ], 
+  "target": "John Fritz"
+}
