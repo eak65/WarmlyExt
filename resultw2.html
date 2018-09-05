@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Result Warmly-2
+    as a content script, all css & js must be loaded from
+    files registered in manifest.js there can't be any
+    inline js or css.
+    -->
+    <title>Warmly Search Results</title>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/vis.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/testdata.js"></script>
+    <script src="js/synonyms.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/resultw2.css">
+  </head>
+  <body>
+    <table border="0" width="100%">
+      <tr>
+        <td align="right">
+          <img src="images/avatar_placeholder.png" width="50px" height="auto">
+        </td>
+        <td>
+          <table>
+            <tr><td><div class="out_label">Target:</div></td><td><div id="target_out">Ethan Keiser</div></td></tr>
+            <tr><td><div class="out_label">Identifiers:</div></td><td><div id="identifiers_out">Study Tree</div></td></tr>
+            <tr><td><div class="out_label">Connectors:</div></td><td><div id="connectors_out">Success, Entrepreneur, Education</div></td></tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div id="synonyms"></div>
+          <br/><br/>
+        </td>
+      </tr>
+      <tr>
+          <td>
+            <div id="message_label">Message</div>
+            <div id="snippet_text">Personal mesage "snippet"</div>
+          </td>
+          <td align="right">Radar Chart here</td>
+      </tr>
+      <tr><td colspan="2"><div class="sep"></div></td></tr>
+      <tr><td colspan="2"><div id="mips_label">Mutual Interest Points</div></td></tr>
+      <tr><td colspan="2"><div id="mips_text">
+          “Education is the most important challenge for....”
+          To successfully manage a startup team you must use technology that
+          enables your employees to achieve success</div></td>
+      </tr>
+      <tr><td colspan="2"><div class="sep"></div></td></tr>
+      <tr><td colspan="2"><div id="quotes_label">Quotes</div></td></tr>
+      <tr><td colspan="2"><div id="quotes_text">
+          In the discussion with the host Rodney B. Murray, Keiser talks about
+          how the app -- which the company calls a "personal assistant" focused
+          on students' academic performance -- uses artificial intelligence to
+          analyze students’ grades and behavioral patterns to construct customized
+          recommendations.</div></td>
+      </tr>
+    </table>
+  </body>
+</html>
