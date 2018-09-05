@@ -41,11 +41,11 @@ td img {
     font-size: 12px;
 }
 
-/* center loading motion Gif */
 .loading_img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  position:absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 45%;
 }
 
 .text-align-center {
