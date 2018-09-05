@@ -1,1 +1,1 @@
-curl -v -sS 'https://warmly2.azurewebsites.net/api/1.0/articles?target=bill+gates&connectors=dos,cpm&closing=test+closing+dos'
+curl -v -sS 'https://warmly2.azurewebsites.net/api/1.0/articles?target=bill+gates&connectors=dos,cpm&identifiers=id1,id2&closing=test+dos+foo+cpm+done.'
