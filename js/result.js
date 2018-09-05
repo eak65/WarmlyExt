@@ -1,10 +1,13 @@
 
-function render_row(row_data) {
+function render_row(i, row_data) {
 
   var row = $("<tr/>");
+  row.addClass("result-row");
   $("#warmly_results").append(row);
 
-  var td_text = '';
+  // row.append('<div class="result-collapse-button">Result ' + i + '</div>');
+  var td_text = '<div id="result-collapse-button-'+ i +'">Result ' + i + '</div>';
+  td_text += '<div class="result-data">';
 
   if (row_data.hasOwnProperty('relevance')) {
     td_text += '<p><span class="r_hdr">Relevance:</span> ' + ss(row_data.relevance)
@@ -23,6 +26,7 @@ function render_row(row_data) {
     }
     td_text += ('<p><span class="r_hdr">Source:</span> ' + ss(row_data.url) + "</p>"
             + '<span class="r_hdr">Published date:</span> ' + ss(row_data['published date']));
+    td_text += "</div";
 
   row.append($("<td>" + td_text + "</td>"));
 }
@@ -42,10 +46,18 @@ function ss(str) {
 }
 
 function render_result(warmly_doc) {
-    $.each(warmly_doc['results'], function(i, row) {
-         console.log('row: ' + i + ': ' + row['published date']);
-        render_row(row);
+  $.each(warmly_doc['results'], function(i, row) {
+    console.log('row: ' + i + ': ' + row['published date']);
+    render_row(i, row);
+
+    var collapseButtonId = "#result-collapse-button-" + i.toString();
+    $(collapseButtonId).click(function() {
+      var resultDataDiv = $(this).parent().find(".result-data").first();
+      resultDataDiv.slideToggle("slow", function() {
+        console.log("done toggling");
+      });
     });
+  });
 }
 
 function load_test_data() {
