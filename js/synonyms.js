@@ -21,16 +21,16 @@ function transform_synonym_to_nodes_and_edges(data) {
 
     $.each(data['synonym'], function(i, sobj) {
         var start=idgen;
-        console.log('root: ' + idgen + ': ' + sobj['root']);
+        //console.log('root: ' + idgen + ': ' + sobj['root']);
         nodes.push({id: idgen, label: sobj['root']})
         idgen++;
         $.each(sobj['syn'], function(i, sdata) {
-            console.log('syn: ' + idgen + ': ' + sdata);
+            //console.log('syn: ' + idgen + ': ' + sdata);
             nodes.push({id: idgen, label: sdata})
             idgen++;
         });
         for (k=start; k<idgen-1; k++) {
-            console.log('edge: ' + start + ' => ' + (k+1));
+            //console.log('edge: ' + start + ' => ' + (k+1));
             edges.push({ from: start, to: k+1});
         }
     });

@@ -12,6 +12,7 @@
     <script src="js/Chart.min.js"></script>
     <script src="js/testdata.js"></script>
     <script src="js/synonyms.js"></script>
+    <script src="js/radar.js"></script>
     <link rel="stylesheet" type="text/css" href="css/resultw2.css">
   </head>
   <body>
@@ -39,7 +40,11 @@
             <div id="message_label">Message</div>
             <div id="snippet_text">Personal mesage "snippet"</div>
           </td>
-          <td align="right">Radar Chart here</td>
+          <td align="right">
+            <div class="chart-container" style="position: relative; height:40vh; width:40vw">
+              <canvas id="radar"></canvas>
+            </div>
+          </td>
       </tr>
       <tr><td colspan="2"><div class="sep"></div></td></tr>
       <tr><td colspan="2"><div id="mips_label">Mutual Interest Points</div></td></tr>
