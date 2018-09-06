@@ -41,11 +41,15 @@ td img {
     font-size: 12px;
 }
 
-.loading_img {
-  position:absolute;
-  left: 50%;
-  right: 50%;
+.loading-image {
+  position: absolute;
+  left: 45%;
   bottom: 45%;
+}
+
+.large-spinner {
+    height: 48px !important;
+    width: 48px !important;
 }
 
 .text-align-center {
@@ -61,6 +65,21 @@ td img {
 .loading-message {
   margin: 2px 0px;
 }
+
 .display-none {
   display:none;
+}
+
+#warmly_results p {
+  margin-bottom: 4px;
+  line-height:  16px;
+}
+
+#warmly_results .keywords-list {
+  line-height: 16px !important;
+  margin-top: 4px;
+}
+
+#warmly_results li {
+  line-height: 16px !important;
 }

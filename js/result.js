@@ -30,7 +30,7 @@ function render_row(row_data) {
 function list_to_html_list(slist) {
   if (slist == null || slist.length < 1)
     return '';
-  var hlist = '<ol><li>';
+  var hlist = '<ol class="keywords-list"><li>';
   hlist += slist.join('</li><li>')
   hlist += '</li></ol>';
   return hlist;
