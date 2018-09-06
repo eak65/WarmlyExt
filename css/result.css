@@ -1,10 +1,13 @@
 /* we don't wan't hideous double-lines border */
 table {
     border-collapse: collapse;
+    margin-left: 3px;
 }
 
 #warmly_results tbody tr td {
    border: 1px solid black;
+   padding-left: 3px;
+   padding-right: 3px;
 }
 
 .r_hdr {
