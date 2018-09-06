@@ -1,17 +1,20 @@
 /* we don't wan't hideous double-lines border */
 table {
     border-collapse: collapse;
+    margin-left: 3px;
 }
 
 #warmly_results tbody tr td {
    border: 1px solid black;
+   padding-left: 3px;
+   padding-right: 3px;
 }
 
 .r_hdr {
   font-weight: bold;
 }
 
-td img { 
+td img {
   vertical-align: top;
 }
 
@@ -41,9 +44,45 @@ td img {
     font-size: 12px;
 }
 
-/* center loading motion Gif */
-.loading_img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto
+.loading-image {
+  position: absolute;
+  left: 45%;
+  bottom: 45%;
+}
+
+.large-spinner {
+    height: 48px !important;
+    width: 48px !important;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+@media screen and (max-width:1024px){
+  .mdl-layout__header{
+    display:flex !important;
+  }
+}
+
+.loading-message {
+  margin: 2px 0px;
+}
+
+.display-none {
+  display:none;
+}
+
+#warmly_results p {
+  margin-bottom: 4px;
+  line-height:  16px;
+}
+
+#warmly_results .keywords-list {
+  line-height: 16px !important;
+  margin-top: 4px;
+}
+
+#warmly_results li {
+  line-height: 16px !important;
 }
