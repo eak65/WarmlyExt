@@ -30,7 +30,7 @@ function render_row(row_data) {
 function list_to_html_list(slist) {
   if (slist == null || slist.length < 1)
     return '';
-  var hlist = '<ol><li>';
+  var hlist = '<ol class="keywords-list"><li>';
   hlist += slist.join('</li><li>')
   hlist += '</li></ol>';
   return hlist;
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('====> result.js render data: ' + request.data);
             //load_test_data();
             $('#loading_progress').css('display', 'none');
+            $('#results_table').css('display', 'table');
             if (request.data == null) {
                 $('#warmly_result_title').text('No data found.');
             } else {
