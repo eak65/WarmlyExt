@@ -76,20 +76,19 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 // render_result(request.data);
                 // $('#warmly_result_title').text('Results:');
-                $('#warmly_result_count').text(request.data.results.length);
+                if ('results' in request.data) {
+                    $('#warmly_result_count').text(request.data.results.length);
+                } else if ('mips' in request.data) {
+                   $('#warmly_result_count').text(request.data.mips.length);
+                }
 
                 var terms = request.data.search_criteria.target;
                 $('#warmly_terms').text(terms);
 
                 var tags = request.data.search_criteria.tags ? request.data.search_criteria.tags : "None";
                 $('#warmly_tags').text(tags);
-                //
-                // $('#tags').show();
-                // $('#terms').show();
 
-                // $('#terms').css('visibility', 'visible');
-                // $('#sunpalms_img').css('display', 'inline-block');
-                var sampleJson = JSON.parse(`{
+                /*var sampleJson = JSON.parse(`{
                   "connectors": [
                     "student",
                     "success",
@@ -180,9 +179,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                   ],
                   "target": "John Fritz"
-                }`);
+                }`);*/
 
-                var accordionTab = createAccordion(sampleJson["mips"]);
+                var accordionTab = createAccordion(request.data["mips"]);
                 document.querySelector('#results-accordion').insertAdjacentHTML('beforeend', accordionTab);
 
                 $('.mdlext-accordion__tab').click(function() {

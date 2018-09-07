@@ -1,6 +1,7 @@
 var gmail;
 
-var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
+//var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
+var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/test';
 //var warmly_base_url='http://localhost:8000/guido_rossum.json';
 
 // this is now loaded from 'criteria_dialog.html'
@@ -31,7 +32,11 @@ function call_warmly(search_criteria) {
           'closing': search_criteria.closing
       },
       'success' : function(data) {
-          console.log('====>> results: ' + data['results']);
+          if ('results' in data) {
+              console.log('====>> results: ' + data['results']);
+          } else if ('connectors' in data) {
+              console.log('====>> connectors: ' + data['connectors']);
+          }
           data.search_criteria = search_criteria;
           /*if (data['results'].length > 0) {
               for (var i = 0; i < data['results'].length; i++) {
