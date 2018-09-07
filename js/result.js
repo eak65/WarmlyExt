@@ -89,6 +89,108 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // $('#terms').css('visibility', 'visible');
                 $('#sunpalms_img').css('display', 'inline-block');
+                var sampleJson = JSON.parse(`{
+                  "connectors": [
+                    "student",
+                    "success",
+                    "graduation"
+                  ],
+                  "identifiers": [
+                    "UMBC",
+                    "education technology"
+                  ],
+                  "mips": [
+                    {
+                      "c": {
+                        "keywords": [
+                          "k1",
+                          "k2"
+                        ],
+                        "mentions": [
+                          "mention string 1",
+                          "mention string 2"
+                        ],
+                        "published date": "date",
+                        "quotes": [
+                          "quote string 1",
+                          "quote string 2"
+                        ],
+                        "relevance": 0.92,
+                        "snippet": "string",
+                        "summary": "summary",
+                        "url": "url string"
+                      },
+                      "m": "string"
+                    },
+                    {
+                      "c": {
+                        "keywords": [
+                          "k1",
+                          "k2"
+                        ],
+                        "mentions": [
+                          "mention string 1",
+                          "mention string 2"
+                        ],
+                        "published date": "date",
+                        "quotes": [
+                          "quote string 1",
+                          "quote string 2"
+                        ],
+                        "relevance": 0.92,
+                        "snippet": "string",
+                        "summary": "summary",
+                        "url": "url string"
+                      },
+                      "m": "string"
+                    }
+                  ],
+                  "radar": {
+                    "datasets": [
+                      {
+                        "data": [
+                          51,
+                          25,
+                          39
+                        ]
+                      }
+                    ],
+                    "label": [
+                      "s1",
+                      "s2",
+                      "s3"
+                    ]
+                  },
+                  "snippet": "test message",
+                  "synonym": [
+                    {
+                      "root": "success",
+                      "syn": [
+                        "achievement",
+                        "accomplishment",
+                        "winning"
+                      ]
+                    },
+                    {
+                      "root": "graduation",
+                      "syn": [
+                        "commencement",
+                        "convocation"
+                      ]
+                    }
+                  ],
+                  "target": "John Fritz"
+                }`);
+
+                var accordionTab = createAccordion(sampleJson["mips"]);
+                document.querySelector('#results-accordion').insertAdjacentHTML('beforeend', accordionTab);
+
+                $('.mdlext-accordion__tab').click(function() {
+                  $(this).next('.mdlext-accordion__tabpanel').toggle();
+
+                  var ariaExpandedValue = $(this).attr('aria-expanded');
+                  $(this).attr('aria-expanded', !(ariaExpandedValue === 'true'));
+                });
             }
         }
     });
