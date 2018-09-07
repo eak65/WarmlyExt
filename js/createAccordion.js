@@ -39,7 +39,7 @@ function createAccordion(mipsDataList) {
   }
 
   function createAccordionHeader(headerText) {
-    return `<header class="mdlext-accordion__tab" aria-expanded="true" role="tab">
+    return `<header class="mdlext-accordion__tab" aria-expanded="false" role="tab">
                     <span class="mdlext-accordion__tab__caption">${headerText}</span>
                     <i class="mdlext-aria-toggle-material-icons"></i>
                   </header>`;
@@ -56,7 +56,7 @@ function createAccordion(mipsDataList) {
     var keywords = createOrderedListWithH6(messageData['keywords'], 'Keywords');
     var mentions = createOrderedListWithH6(messageData['mentions'], 'Mentions');
     var quotes = createOrderedListWithH6(messageData['quotes'], 'Quotes');
-    var resultDataSection = `<section class="mdlext-accordion__tabpanel" role="tabpanel" aria-hidden="false">
+    var resultDataSection = `<section class="mdlext-accordion__tabpanel" style="display:none" role="tabpanel" aria-hidden="false">
       ${createSubsectionDiv(publishedSubsection)}
       ${createSubsectionDiv(relevanceSubsection)}
       ${createSubsectionDiv(summarySubsection)}
