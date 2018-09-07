@@ -97,6 +97,14 @@ td img {
   margin-bottom: 0px;
 }
 
+#results-data ul {
+  margin: 0px 2px;
+}
+
+#results-data li {
+  padding: 12px;
+}
+
 .accordion-subsection-header {
   margin-top: 4px;
   margin-bottom: 2px;
@@ -121,4 +129,8 @@ td img {
 .mdlext-accordion__tabpanel ul {
   margin-bottom: 0px;
   line-height: 16px;
+}
+
+.mdlext-accordion__tab {
+  border: 0;
 }

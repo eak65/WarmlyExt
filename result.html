@@ -14,7 +14,7 @@
     <script src="js/material.min.js"></script>
     <script src="js/createAccordion.js"></script>
   </head>
-  <body>
+  <body class="mdl-color--grey-100">
     <header id="warmly-header" class="mdl-layout__header mdl-layout__header--scroll mdl-color--orange-300">
       <div class="mdl-layout__header-row">
         <img src="images/sunpalms-45.png"/>
@@ -26,9 +26,20 @@
       <div class="loading-image text-align-center"><div class="mdl-spinner mdl-js-spinner is-active large-spinner"></div></div>
     </div>
     <div id="results-data" class="display-none">
-      <p><b>Terms:</b><span id="warmly_terms"></span></p>
-      <p><b>Tags:</b><span id="warmly_tags"></span></p>
-      <p><b>Results:</b><span id="warmly_result_count"></span></p>
+      <ul class="mdl-list">
+        <li class="mdl-list__item">
+          <span class="mdl-list__item-primary-content">Terms: </span>
+          <span id="warmly_terms" class="mdl-list__item-secondary-content"></span>
+        </li>
+        <li class="mdl-list__item">
+          <span class="mdl-list__item-primary-content">Tags: </span>
+          <span id="warmly_tags" class="mdl-list__item-secondary-content"></span>
+        </li>
+        <li class="mdl-list__item">
+          <span class="mdl-list__item-primary-content">Results: </span>
+          <span id="warmly_result_count" class="mdl-list__item-secondary-content"></span>
+        </li>
+      </ul>
     </div>
     <ul id="results-accordion" class="mdlext-accordion mdlext-js-accordion mdlext-accordion--vertical mdlext-js-ripple-effect mdlext-js-animation-effect"
         role="tablist" aria-multiselectable="true">
