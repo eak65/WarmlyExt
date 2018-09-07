@@ -6,8 +6,9 @@
   "content_scripts": [
     {
       "matches": ["*://mail.google.com/*"],
-      "js": ["js/content.js", "js/result.js", "js/material.min.js"],
+      "js": ["js/content.js", "js/result.js", "js/resultw2.js", "js/material.min.js"],
       "css": ["css/content.css",
+              "css/resultw2.css",
               "css/selectize.default.css",
               "css/jquery.highlight-within-textarea.css",
               "css/material.min.css"]
@@ -17,8 +18,9 @@
     "js/jquery-1.10.2.min.js",
     "js/gmail.js",
     "js/main.js",
-    "js/result.html",
     "js/result.js",
+    "js/resultw2.js",
+    "css/resultw2.css",
     "js/selectize.js",
     "js/jquery.highlight-within-textarea.js",
     "js/jquery.highlight-within-textarea.css"

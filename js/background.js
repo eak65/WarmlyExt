@@ -20,7 +20,7 @@ chrome.runtime.onMessageExternal.addListener(function(request, sender, sendRespo
 
     if (request.type === 'warmly_create_popup') {
         chrome.tabs.create({
-            url: chrome.extension.getURL('result.html'),
+            url: chrome.extension.getURL(request.file),
             active: false
         }, function(tab) {
             // After the tab has been created, open a window to inject the tab

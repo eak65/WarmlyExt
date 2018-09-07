@@ -1,6 +1,7 @@
 var gmail;
 
-var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
+//var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
+var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/test';
 //var warmly_base_url='http://localhost:8000/guido_rossum.json';
 
 // this is now loaded from 'criteria_dialog.html'
@@ -31,7 +32,7 @@ function call_warmly(search_criteria) {
           'closing': search_criteria.closing
       },
       'success' : function(data) {
-          console.log('====>> results: ' + data['results']);
+          console.log('====>> results: ' + data['connectors']);
           data.search_criteria = search_criteria;
           /*if (data['results'].length > 0) {
               for (var i = 0; i < data['results'].length; i++) {
@@ -166,8 +167,10 @@ var main = function() {
       args.closing = $('#closing').val();
       console.log('====> target: ' + args.target
           + ' tags: ' + args.tags + ' closing: ' + args.closing);
-      chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', {type:'warmly_create_popup'});
+      chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii',
+          {type:'warmly_create_popup', file: 'resultw2.html'});
       console.log('====> sent message to request popup');
+      //debugger;
       call_warmly(args);
       console.log('====> called warmly.');
       gmail.tools.remove_modal_window();
