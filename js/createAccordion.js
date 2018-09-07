@@ -81,11 +81,6 @@ function createAccordion(mipsDataList) {
   for (var i = 0; i < accordionLength; i++) {
     accordionTabs.push(createAccordionTab(mipsDataList[i]))
   }
-  // mipsDataList.map(data => createAccordionTab(data));
 
   return accordionTabs.join('');
-   // `<ul id="results-accordion" class="mdlext-accordion mdlext-js-accordion mdlext-accordion--vertical mdlext-js-ripple-effect mdlext-js-animation-effect"
-   //    role="tablist" aria-multiselectable="true">
-   //      ${accordionTabs}
-   //    </ul>`;
 }
