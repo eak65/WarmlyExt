@@ -14,7 +14,8 @@
               "css/selectize.default.css",
               "css/jquery.highlight-within-textarea.css",
               "css/material.min.css",
-              "css/mdl-ext.min.css"]
+              "css/mdl-ext.min.css",
+              "css/material-icons.css"]
     }
   ],
   "web_accessible_resources": [
@@ -27,7 +28,8 @@
     "js/jquery.highlight-within-textarea.js",
     "js/jquery.highlight-within-textarea.css",
     "js/material.min.js",
-    "js/createAccordion.js"
+    "js/createAccordion.js",
+    "fonts/*.woff2"
   ],
   "externally_connectable": {
     "matches": [
