@@ -125,7 +125,7 @@ var main = function() {
                     };
                     gmail.tools.add_modal_window('Warmly Registration', 'Would you like register for Warmly?', openRegistrationPage);
                   } else {
-                    gmail.tools.add_modal_window('', criteria_dialog, warmly_action);
+                    gmail.tools.add_modal_window('<Warmly', criteria_dialog, warmly_action);
                     if (recipient_name!=null) {
                       $('#target').val(recipient_name);
                     }
