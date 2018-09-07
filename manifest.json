@@ -6,11 +6,15 @@
   "content_scripts": [
     {
       "matches": ["*://mail.google.com/*"],
-      "js": ["js/content.js", "js/result.js", "js/material.min.js"],
+      "js": ["js/content.js",
+              "js/result.js",
+              "js/material.min.js",
+              "js/createAccordion.js"],
       "css": ["css/content.css",
               "css/selectize.default.css",
               "css/jquery.highlight-within-textarea.css",
-              "css/material.min.css"]
+              "css/material.min.css",
+              "css/mdl-ext.min.css"]
     }
   ],
   "web_accessible_resources": [
@@ -21,7 +25,9 @@
     "js/result.js",
     "js/selectize.js",
     "js/jquery.highlight-within-textarea.js",
-    "js/jquery.highlight-within-textarea.css"
+    "js/jquery.highlight-within-textarea.css",
+    "js/material.min.js",
+    "js/createAccordion.js"
   ],
   "externally_connectable": {
     "matches": [

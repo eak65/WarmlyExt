@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('====> result.js render data: ' + request.data);
             //load_test_data();
             $('#loading_progress').css('display', 'none');
-            $('#results_table').css('display', 'table');
+            $('#results-data').css('display', 'table');
             if (request.data == null) {
                 $('#warmly_result_title').text('No data found.');
             } else {
-                render_result(request.data);
-                $('#warmly_result_title').text('Results:');
+                // render_result(request.data);
+                // $('#warmly_result_title').text('Results:');
                 $('#warmly_result_count').text(request.data.results.length);
 
                 var terms = request.data.search_criteria.target;
@@ -83,12 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 var tags = request.data.search_criteria.tags ? request.data.search_criteria.tags : "None";
                 $('#warmly_tags').text(tags);
-
-                $('#tags').show();
-                $('#terms').show();
+                //
+                // $('#tags').show();
+                // $('#terms').show();
 
                 // $('#terms').css('visibility', 'visible');
-                $('#sunpalms_img').css('display', 'inline-block');
+                // $('#sunpalms_img').css('display', 'inline-block');
                 var sampleJson = JSON.parse(`{
                   "connectors": [
                     "student",

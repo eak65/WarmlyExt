@@ -83,3 +83,39 @@ td img {
 #warmly_results li {
   line-height: 16px !important;
 }
+
+#results-data {
+  padding: 2px;
+}
+#results-data b {
+  margin-right: 2px;
+}
+#results-data p {
+  margin-bottom: 0px;
+}
+
+.accordion-subsection-header {
+  margin-top: 4px;
+  margin-bottom: 2px;
+  line-height: 16px;
+}
+
+.mdlext-accordion__tab {
+  margin-top: 4px;
+}
+
+.mdlext-accordion__tabpanel h6 {
+  margin-top: 8px;
+  margin-bottom: 4px;
+  line-height: 16px;
+}
+
+.mdlext-accordion__tabpanel p {
+  margin-bottom: 0px;
+  line-height: 16px;
+}
+
+.mdlext-accordion__tabpanel ul {
+  margin-bottom: 0px;
+  line-height: 16px;
+}

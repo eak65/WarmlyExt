@@ -2,12 +2,17 @@
 <html>
   <head>
     <title>Warmly Search</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src https://code.jquery.com 'self';">
+
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/result.js"></script>
     <link rel="stylesheet" type="text/css" href="css/result.css">
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
     <link rel="stylesheet" href="css/material.min.css">
-    <script defer src="js/material.min.js"></script>
+    <link rel="stylesheet" href="css/mdl-ext.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/material.min.js"></script>
+    <script src="js/createAccordion.js"></script>
   </head>
   <body>
     <header id="warmly-header" class="mdl-layout__header mdl-layout__header--scroll mdl-color--orange-300">
@@ -20,34 +25,13 @@
       <h6 class="loading-message text-align-center">Let's warm this up. This may take up to 5 minutes.</h6>
       <div class="loading-image text-align-center"><div class="mdl-spinner mdl-js-spinner is-active large-spinner"></div></div>
     </div>
-    <table class="display-none" id="results_table">
-      <tr>
-        <td>
-          <div style="display:inline-block">
-            <table>
-              <tr id="terms" style="display:none;">
-                <td id="warmly_terms_hdr" class="warmly_result_caption">Terms:</td>
-                <td id="warmly_terms" class="warmly_top_data"></td>
-              </tr>
-              <tr id="tags" style="display:none;">
-                <td id="warmly_tags_hdr" class="warmly_result_caption">Tags:</td>
-                <td id="warmly_tags" class="warmly_top_data"></td>
-              </tr>
-              <tr>
-                <td id="warmly_result_title"><h6></h6></td>
-                <td id="warmly_result_count" class="warmly_top_data"></td>
-              </tr>
-            </table>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        </tr>
-        <tr>
-          <td>
-            <table id="warmly_results"></table>
-          </td>
-        </tr>
-    </table>
+    <div id="results-data" class="display-none">
+      <p><b>Terms:</b><span id="warmly_terms"></span></p>
+      <p><b>Tags:</b><span id="warmly_tags"></span></p>
+      <p><b>Results:</b><span id="warmly_result_count"></span></p>
+    </div>
+    <ul id="results-accordion" class="mdlext-accordion mdlext-js-accordion mdlext-accordion--vertical mdlext-js-ripple-effect mdlext-js-animation-effect"
+        role="tablist" aria-multiselectable="true">
+    </ul>
   </body>
 </html>
