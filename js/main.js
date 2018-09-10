@@ -1,8 +1,13 @@
 var gmail;
 
+// pull live data from Warmly Service
 //var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
+
+// pull test data from Warmly Service
 var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/test';
-//var warmly_base_url='http://localhost:8000/guido_rossum.json';
+
+// pull test JSON from local HTTP server
+//var warmly_base_url='http://localhost:8080/testdata.json';
 
 // this is now loaded from 'criteria_dialog.html'
 var criteria_dialog = "";
@@ -45,7 +50,9 @@ function call_warmly(search_criteria) {
           }*/
           var payload = {type: 'warmly_display_result', data: data};
           console.log('====>> payload type: ' + payload.type + ' payload data: ' + payload.data);
-          chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', payload);
+          setTimeout(function() {
+              chrome.runtime.sendMessage('papmjbnpmffiahcnakjfjoobkefaemii', payload);
+          }, 1000);
       },
       'error' : function(jqXHR, status, message) {
           console.log('====> service call error: ' + status + ': ' + message);
@@ -130,7 +137,7 @@ var main = function() {
                     };
                     gmail.tools.add_modal_window('Warmly Registration', 'Would you like register for Warmly?', openRegistrationPage);
                   } else {
-                    gmail.tools.add_modal_window('', criteria_dialog, warmly_action);
+                    gmail.tools.add_modal_window('<b>Warmly</b>', criteria_dialog, warmly_action);
                     if (recipient_name!=null) {
                       $('#target').val(recipient_name);
                     }

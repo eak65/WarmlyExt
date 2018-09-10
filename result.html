@@ -5,13 +5,19 @@
     <meta http-equiv="Content-Security-Policy" content="script-src https://code.jquery.com 'self';">
 
     <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/vis.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/createAccordion.js"></script>
     <script src="js/result.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/result.css">
+
     <link rel="stylesheet" href="css/material.min.css">
     <link rel="stylesheet" href="css/mdl-ext.min.css">
     <link rel="stylesheet" href="css/material-icons.css">
-    <script src="js/material.min.js"></script>
-    <script src="js/createAccordion.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/result-top.css">
+    <link rel="stylesheet" type="text/css" href="css/result.css">
+
+
   </head>
   <body class="mdl-color--grey-100">
     <header id="warmly-header" class="mdl-layout__header mdl-layout__header--scroll mdl-color--orange-300">
@@ -25,15 +31,39 @@
       <div class="loading-image text-align-center"><div class="mdl-spinner mdl-js-spinner is-active large-spinner"></div></div>
     </div>
     <div id="results-data" class="display-none">
+      <table border="0" width="100%">
+        <tr>
+          <td align="right">
+            <img src="images/avatar_placeholder.png" width="50px" height="auto">
+          </td>
+          <td>
+            <table>
+              <tr><td><label class="out_label">Target:</label></td><td><div id="target_out"></div></td></tr>
+              <tr><td><label class="out_label">Identifiers:</label></td><td><div id="identifiers_out"></div></td></tr>
+              <tr><td><label class="out_label">Connectors:</label></td><td><div id="connectors_out"></div></td></tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <div id="synonyms"></div>
+            <br/><br/>
+          </td>
+        </tr>
+        <tr>
+            <td valign="top">
+              <label id="message_label">Message</label>
+              <div id="snippet_text"></div>
+            </td>
+            <td align="right">
+              <div class="chart-container" style="position: relative; height:40vh; width:40vw">
+                <canvas id="radar"></canvas>
+              </div>
+            </td>
+        </tr>
+        <tr><td colspan="2"><div class="sep"></div></td></tr>
+      </table>
       <ul class="mdl-list">
-        <li class="mdl-list__item">
-          <span class="mdl-list__item-primary-content">Terms: </span>
-          <span id="warmly_terms" class="mdl-list__item-secondary-content"></span>
-        </li>
-        <li class="mdl-list__item">
-          <span class="mdl-list__item-primary-content">Tags: </span>
-          <span id="warmly_tags" class="mdl-list__item-secondary-content"></span>
-        </li>
         <li class="mdl-list__item">
           <span class="mdl-list__item-primary-content">Results: </span>
           <span id="warmly_result_count" class="mdl-list__item-secondary-content"></span>

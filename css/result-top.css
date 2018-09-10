@@ -1,0 +1,49 @@
+.out_label {
+  font-weight: bold;
+}
+
+#target_out {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#connectors_out {
+  color: blue;
+}
+
+#message_label {
+  color: orange
+}
+
+#synonyms {
+  width: auto;
+  height: 200px;
+  border: 1px solid lightgray;
+}
+
+#mips_label {
+  font-weight: bold;
+}
+
+#quotes_label {
+  font-weight: bold;
+}
+
+.sep {
+  height: 2px;
+  width: 85%;
+  margin-left: 40px;
+  background-color: #cccccc;
+}
+
+.section {
+  display: block;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+a, u {
+    text-decoration: none;
+    color: red;
+}
