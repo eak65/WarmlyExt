@@ -1,1 +1,12 @@
-curl -v -sS 'https://warmly2.azurewebsites.net/api/1.0/test?target=bill+gates&connectors=dos,cpm&closing=test+closing+dos'
+#BASE='https://warmly2.azurewebsites.net'
+#BASE='http://warmly-env-2.bq6ng3tn7d.us-east-2.elasticbeanstalk.com'
+BASE='https://www.warmly.io'
+APIPATH='/api/1.0/articles'
+PROXY="-x localhost:8888"
+curl -k $PROXY -v -sS -H 'Host: www.warmly.io' \
+  -H 'Connection: keep-alive' \
+  -H 'Accept: application/json, text/javascript, */*; q=0.01' \
+  -H 'Origin: https://www.gmail.com' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36' \
+  -H 'Referer: https://mail.google.com/mail/u/0/' \
+  "${BASE}${APIPATH}?target=bill+gates&connectors=dos,cpm&closing=test+closing+dos"

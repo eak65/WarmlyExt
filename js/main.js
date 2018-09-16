@@ -4,10 +4,15 @@ var gmail;
 //var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/articles';
 
 // pull test data from Warmly Service
-var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/test';
+//var warmly_base_url='https://warmly2.azurewebsites.net/api/1.0/test';
 
 // pull test JSON from local HTTP server
 //var warmly_base_url='http://localhost:8080/testdata.json';
+
+//var service_base_url='http://warmly-env-2.bq6ng3tn7d.us-east-2.elasticbeanstalk.com';
+var service_base_url='https://www.warmly.io'
+var api_path='/api/1.0/test';
+var warmly_service_url=service_base_url + api_path;
 
 // this is now loaded from 'criteria_dialog.html'
 var criteria_dialog = "";
@@ -27,27 +32,29 @@ function refresh(warmly_entry_point) {
 function call_warmly(search_criteria) {
   $.support.cors = true;
   $.ajax({
-      'url' : warmly_base_url,
+      'url' : warmly_service_url,
       'type': 'GET',
       'dataType' : 'json',
-      'data': {
-          'target': search_criteria.target,
-          'identifiers': search_criteria.identifiers,
-          'connectors': search_criteria.connectors,
-          'closing': search_criteria.closing
-      },
-      'success' : function(data) {
-          if ('results' in data) {
+      'data': search_criteria,
+      'success' : function(data, textStatus, xhr) {
+          console.log('====>> HTTP status: ' + xhr.status); 
+          if (xhr.status == 204) {
+             console.log('====>> No data');
+          } else if ('results' in data) {
               console.log('====>> results: ' + data['results']);
           } else if ('connectors' in data) {
               console.log('====>> connectors: ' + data['connectors']);
+          } else if ('requestId' in data) {
+              console.log('====>> requestId: ' + data['requestId']);
+              setTimeout(function() {
+                  call_warmly({'requestId': data['requestId']});
+              }, 3000);
+          }
+
+          if (data == null) {
+              data = new Object();
           }
           data.search_criteria = search_criteria;
-          /*if (data['results'].length > 0) {
-              for (var i = 0; i < data['results'].length; i++) {
-                  console.log('====> published date type: ' + typeof(data['results'][i]['published date']));
-              }
-          }*/
           var payload = {type: 'warmly_display_result', data: data};
           console.log('====>> payload type: ' + payload.type + ' payload data: ' + payload.data);
           setTimeout(function() {
