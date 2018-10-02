@@ -1,16 +1,21 @@
 {
   "manifest_version": 2,
   "name": "Warmly",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "description": "Automated web research assistant.",
   "content_scripts": [
     {
       "matches": ["*://mail.google.com/*"],
-      "js": ["js/content.js", "js/result.js", "js/material.min.js"],
+      "js": ["js/content.js",
+              "js/result.js",
+              "js/material.min.js",
+              "js/createAccordion.js"],
       "css": ["css/content.css",
               "css/selectize.default.css",
               "css/jquery.highlight-within-textarea.css",
-              "css/material.min.css"]
+              "css/material.min.css",
+              "css/mdl-ext.min.css",
+              "css/material-icons.css"]
     }
   ],
   "web_accessible_resources": [
@@ -21,12 +26,19 @@
     "js/result.js",
     "js/selectize.js",
     "js/jquery.highlight-within-textarea.js",
-    "js/jquery.highlight-within-textarea.css"
+    "js/jquery.highlight-within-textarea.css",
+    "js/material.min.js",
+    "js/createAccordion.js",
+    "fonts/*.woff2"
   ],
   "externally_connectable": {
     "matches": [
       "*://mail.google.com/*",
-      "chrome-extension://papmjbnpmffiahcnakjfjoobkefaemii/*"
+      "chrome-extension://papmjbnpmffiahcnakjfjoobkefaemii/*",
+      "http://localhost/*",
+      "http://localhost:8000/*",
+      "http://127.0.0.1/*",
+      "http://127.0.0.1:8000/*"
     ]
   },
   "background": {

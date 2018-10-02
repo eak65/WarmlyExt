@@ -2,14 +2,24 @@
 <html>
   <head>
     <title>Warmly Search</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src https://code.jquery.com 'self';">
+
     <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/material.min.js"></script>
+    <script src="js/vis.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/createAccordion.js"></script>
     <script src="js/result.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/result.css">
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
     <link rel="stylesheet" href="css/material.min.css">
-    <script defer src="js/material.min.js"></script>
+    <link rel="stylesheet" href="css/mdl-ext.min.css">
+    <link rel="stylesheet" href="css/material-icons.css">
+    <link rel="stylesheet" type="text/css" href="css/result-top.css">
+    <link rel="stylesheet" type="text/css" href="css/result.css">
+
+
   </head>
-  <body>
+  <body class="mdl-color--grey-100">
     <header id="warmly-header" class="mdl-layout__header mdl-layout__header--scroll mdl-color--orange-300">
       <div class="mdl-layout__header-row">
         <img src="images/sunpalms-45.png"/>
@@ -20,34 +30,48 @@
       <h6 class="loading-message text-align-center">Let's warm this up. This may take up to 5 minutes.</h6>
       <div class="loading-image text-align-center"><div class="mdl-spinner mdl-js-spinner is-active large-spinner"></div></div>
     </div>
-    <table class="display-none" id="results_table">
-      <tr>
-        <td>
-          <div style="display:inline-block">
-            <table>
-              <tr id="terms" style="display:none;">
-                <td id="warmly_terms_hdr" class="warmly_result_caption">Terms:</td>
-                <td id="warmly_terms" class="warmly_top_data"></td>
-              </tr>
-              <tr id="tags" style="display:none;">
-                <td id="warmly_tags_hdr" class="warmly_result_caption">Tags:</td>
-                <td id="warmly_tags" class="warmly_top_data"></td>
-              </tr>
-              <tr>
-                <td id="warmly_result_title"><h6></h6></td>
-                <td id="warmly_result_count" class="warmly_top_data"></td>
-              </tr>
-            </table>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        </tr>
+    <div id="results-data" class="display-none">
+      <table border="0" width="100%">
         <tr>
+          <td align="right">
+            <img src="images/avatar_placeholder.png" width="50px" height="auto">
+          </td>
           <td>
-            <table id="warmly_results"></table>
+            <table>
+              <tr><td><label class="out_label">Target:</label></td><td><div id="target_out"></div></td></tr>
+              <tr><td><label class="out_label">Identifiers:</label></td><td><div id="identifiers_out"></div></td></tr>
+              <tr><td><label class="out_label">Connectors:</label></td><td><div id="connectors_out"></div></td></tr>
+            </table>
           </td>
         </tr>
-    </table>
+        <tr>
+          <td colspan="2">
+            <div id="synonyms"></div>
+            <br/><br/>
+          </td>
+        </tr>
+        <tr>
+            <td valign="top">
+              <label id="message_label">Message</label>
+              <div id="snippet_text"></div>
+            </td>
+            <td align="right">
+              <div class="chart-container" style="position: relative; height:40vh; width:40vw">
+                <canvas id="radar"></canvas>
+              </div>
+            </td>
+        </tr>
+        <tr><td colspan="2"><div class="sep"></div></td></tr>
+      </table>
+      <ul class="mdl-list">
+        <li class="mdl-list__item">
+          <span class="mdl-list__item-primary-content">Results: </span>
+          <span id="warmly_result_count" class="mdl-list__item-secondary-content"></span>
+        </li>
+      </ul>
+    </div>
+    <ul id="results-accordion" class="mdlext-accordion mdlext-js-accordion mdlext-accordion--vertical mdlext-js-ripple-effect mdlext-js-animation-effect"
+        role="tablist" aria-multiselectable="true">
+    </ul>
   </body>
 </html>

@@ -43,3 +43,12 @@ To load from checked out code, enable "Developer Mode" in the `chrome://extensio
 In Chrome, from the menu, select "More Tools", then "Extensions".  The extensions page will come up.  
 Click on "LOAD UNPACKED" and select this directory.  The "Warmly" button should appear when the page
 https://mail.google.com is loaded.
+
+### Local `HTTP` serving static test `JSON`
+The Python based `SimpleHTTPServer` doesn't seem to work when requesting from a chrome extension.  I found that the _NodeJS_ package, [http-server](https://www.npmjs.com/package/http-server) works, however, possibly due to being able to enable CORS easily from the command line.  The following instructions assume you have _node_ and _npm_ installed.
+
+```
+# cd test
+$ npm install http-server -g
+$ http-server --cors
+```
